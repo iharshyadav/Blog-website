@@ -81,6 +81,19 @@
     .title {
       font-size: 64px;
     }
+
+    .buttonC{
+      padding-left: 2vw;
+      padding-right: 2vw;
+    }
+
+    .brands{
+      height: 40px;
+      position: relative;
+      filter: grayscale(1);
+      text-align:center;
+      margin-left: 8vw;
+    }
   
     .brands{
       width: 100%;
