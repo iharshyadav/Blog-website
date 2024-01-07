@@ -1,7 +1,31 @@
 import Image from "next/image"
 import styles from "./post.module.css"
+import PostUser from "@/components/postUser/postUser";
+import { Suspense } from "react";
+import { getPost } from "@/lib/data";
 
-const post = () => {
+// FETCH DATA WITH AN API 
+
+// const getData = async (slug)=>{
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`)
+
+//   if(!res.ok){
+//     throw new Error ("something went wrong")
+//   }
+
+//   return res.json();
+// }
+
+const post = async ({params}) => {
+
+  const {slug} = params;
+
+// FETCH DATA WITH AN API 
+  // const data = await getData(slug);
+  
+  // FETCH DATA WITHOUT AN API 
+  const data = await getPost(slug);
+
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -12,7 +36,7 @@ const post = () => {
         />
       </div>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{data?.title}</h1>
         <div className={styles.detail}>
           <Image
             className={styles.avatar}
@@ -21,10 +45,9 @@ const post = () => {
             width={50}
             height={50}
           />
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>Terry Jefferson</span>
-          </div>
+          {data && <Suspense fallback={<div>Loading...</div>}>
+            <PostUser userId={data.userId}/>
+          </Suspense>}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.2024</span>
