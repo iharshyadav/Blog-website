@@ -23,12 +23,11 @@ const posts = await getPosts();
 
   return (
     <div className={styles.container}>
-      {posts.map((post)=>(
+      {posts.map((post :any)=>(
       <div className={styles.post} key={post.id}>
         <PostCards post={post} />
       </div>
       ))}
-      
     </div>
   );
 }

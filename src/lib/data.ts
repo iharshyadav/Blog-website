@@ -14,7 +14,7 @@ export const getPosts = async ()=>{
 
 }
 
-export const getPost =async (slug)=>{
+export const getPost =async (slug:any)=>{
     try {
          connectToDb()
         const post = await Post.find({slug});
@@ -25,7 +25,7 @@ export const getPost =async (slug)=>{
     }
 }
 
-export const getUser = async (id)=>{
+export const getUser = async (id:any)=>{
     try {
          connectToDb()
         const user = await User.findById(id)
