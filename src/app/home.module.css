@@ -31,7 +31,7 @@
   }
   
   .button{
-    padding: 12px;
+    padding: 13px;
     min-width: 120px;
     cursor: pointer;
     border: none;
@@ -51,6 +51,8 @@
     padding-right: 1.2vw;
     border-radius: 5px;
     font-weight: 600;
+    padding-bottom: 2vh;
+    padding-top: 1.8vh;
   }
   
   .brands{
@@ -85,6 +87,7 @@
     .buttonC{
       padding-left: 2vw;
       padding-right: 2vw;
+      padding-bottom: 2.7vh;
     }
 
     .brands{

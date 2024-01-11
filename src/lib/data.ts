@@ -1,48 +1,49 @@
 import { Post, User } from "./model";
 import { connectToDb } from "./utils";
+import { unstable_noStore as noStore } from "next/cache";
 
 
-export const getPosts = async ()=>{
-    try {
-     connectToDb()
+export const getPosts = async () => {
+  try {
+    connectToDb();
     const posts = await Post.find();
     return posts;
-    } catch (err) {
-        console.log(err);
-        throw new Error("Failed to Fetch Posts!");
-    }
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch posts!");
+  }
+};
 
-}
+export const getPost = async (slug:any) => {
+  try {
+    connectToDb();
+    const post = await Post.findOne({ slug });
+    return post;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch post!");
+  }
+};
 
-export const getPost =async (slug:any)=>{
-    try {
-         connectToDb()
-        const post = await Post.find({slug});
-        return post
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to Fetch Post!");
-    }
-}
+export const getUser = async (id) => {
+  noStore();
+  try {
+    connectToDb();
+    const user = await User.findById(id);
+    return user;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch user!");
+  }
+};
 
-export const getUser = async (id:any)=>{
-    try {
-         connectToDb()
-        const user = await User.findById(id)
-        return user;
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to Fetch User!");
-    } 
-}
-
-export const getUsers = async ()=>{
-    try {
-         connectToDb()
-        const users = await User.find()
-        return users;
-    } catch (error) {
-        console.log(error);
-        throw new Error("Failed to Fetch Users!");
-    } 
-}
+export const getUsers = async () => {
+  try {
+    connectToDb();
+    const users = await User.find();
+    return users;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch users!");
+  }
+};

@@ -51,12 +51,6 @@
     font-weight: 400;
     color: gray;
   }
-
-  .avatar{
-    border-radius: 50%;
-    object-fit: cover;
-    height: 50px;
-  }
   
   @media (max-width:768px){
     .imgContainer{

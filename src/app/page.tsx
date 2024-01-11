@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./home.module.css"
 import Image from "next/image";
 
@@ -12,8 +13,8 @@ const Home = () => {
           blanditiis adipisci minima reiciendis a autem assumenda dolore.
         </p>
         <div className={styles.buttons}>
-          <button className={styles.button}>Learn More</button>
-          <button className={styles.buttonC}>Contact</button>
+          <Link href="/about"><button className={styles.button}>Learn More</button></Link>
+          <Link href="/contact"><button className={styles.buttonC}>Contact</button></Link>
         </div>
         <div className={styles.brands}>
           <Image src="/brands.png" alt="" fill className={styles.brandImg}/>
