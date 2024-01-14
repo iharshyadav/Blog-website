@@ -43,23 +43,36 @@ const Links = ({session}:any) => {
         ))}
         {session?.user ? (
           <>
-            {session.user?.isAdmin && <NavLink items={{ name: "Admin", path: "/admin" }} />}
+            {session.user?.isAdmin && (
+              <NavLink items={{ name: "Admin", path: "/admin" }} />
+            )}
             <form action={handlelogout}>
               <button>Logout</button>
             </form>
           </>
         ) : (
-          <NavLink items={{ name: "Login", path: "/login" }} />
+          <>
+            <NavLink items={{ name: "Login", path: "/login" }} />
+            <NavLink items={{ name: "SignUp", path: "/register" }} />
+          </>
         )}
       </div>
       {/* <button className={styles.menuButton} onClick={()=>setPopup((prev)=>!prev)}>Menubutton</button> */}
-      <Image src="/menu.png" className={styles.menuButton} alt="" width={25} height={25} onClick={()=>setPopup((prev)=>!prev)}/>
-      {popUp && <div className={styles.mobileLinks}>
-        {links.map((link)=>(
-            <NavLink items={link} key={link.name}/>
-        ))}
-      </div>
-      }
+      <Image
+        src="/menu.png"
+        className={styles.menuButton}
+        alt=""
+        width={25}
+        height={25}
+        onClick={() => setPopup((prev) => !prev)}
+      />
+      {popUp && (
+        <div className={styles.mobileLinks}>
+          {links.map((link) => (
+            <NavLink items={link} key={link.name} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

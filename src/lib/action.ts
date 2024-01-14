@@ -5,6 +5,7 @@ import { Post, User } from "./model";
 import { connectToDb } from "./utils"
 import mongoose from "mongoose";
 import { signIn, signOut } from "./auth";
+import bcrypt from "bcryptjs"
 
 
 export const addPost =async (formData:any)=>{
@@ -64,21 +65,25 @@ export const handlelogout = async ()=>{
     console.log("successfully Logged Out");
 }
 
-export const registerUser = async (formData:any) =>{
+export const registerUser = async (previousState,formData) =>{
     const {username,email,password,repeatPassword,img} = Object.fromEntries(formData);
+    
     if(password !== repeatPassword){
         return{error:"Password did not match"}
     } 
     try {
         connectToDb();
-        const user = await User.findOne({username});
+        const user = await User.findOne({ username });
         if(user){
             return {error:"user already exist"}
         }
+
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(password,salt);
         const newUser = new User ({
             username,
             email,
-            password,
+            password:hashPassword,
             img
         })
         await newUser.save();
@@ -88,4 +93,18 @@ export const registerUser = async (formData:any) =>{
         console.log(error)
         // return{succes:false}
     }
+}
+
+export const loginhandler = async(prevState,formData)=>{
+  const {username,password} = Object.fromEntries(formData);
+
+  try {
+    await signIn("credentials",{username , password});
+  } catch (error) {
+    console.log(error)
+    if(error.message.includes("CredentialsSignin")){
+        return{error:"Invalid username or password"};
+    }
+    throw error;
+  }
 }

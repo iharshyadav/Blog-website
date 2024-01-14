@@ -1,5 +1,7 @@
+import LoginForm from "@/components/loginForm/loginForm";
 import { handleGithubSession, handleGoogleSession } from "@/lib/action"
 import { auth } from "@/lib/auth"
+import styles from "./login.module.css";
 
 const login = async() => {
  
@@ -7,15 +9,18 @@ const login = async() => {
   console.log(session);
 
   return (
-    <div>
-      <form action={handleGithubSession}>
-        <button className="bg-white text-black p-2 rounded-lg">github</button>
-      </form>
-      <form action={handleGoogleSession}>
-        <button className="bg-white text-black p-2 rounded-lg">google</button>
-      </form>
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+      <LoginForm />
+        <form action={handleGithubSession}>
+          <button className={styles.github}>github</button>
+        </form>
+        <form action={handleGoogleSession}>
+          <button className={styles.github}>google</button>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
 export default login
