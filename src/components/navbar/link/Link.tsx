@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link"
 import styles from "./nav.module.css"
 import NavLink from "./navlink/navLinks"
 import { useState } from "react"

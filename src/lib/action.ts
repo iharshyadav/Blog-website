@@ -65,7 +65,7 @@ export const handlelogout = async ()=>{
     console.log("successfully Logged Out");
 }
 
-export const registerUser = async (previousState,formData) =>{
+export const registerUser = async ({formData}:any) =>{
     const {username,email,password,repeatPassword,img} = Object.fromEntries(formData);
     
     if(password !== repeatPassword){
@@ -95,7 +95,7 @@ export const registerUser = async (previousState,formData) =>{
     }
 }
 
-export const loginhandler = async(prevState,formData)=>{
+export const loginhandler = async({formData}:any)=>{
   const {username,password} = Object.fromEntries(formData);
 
   try {
