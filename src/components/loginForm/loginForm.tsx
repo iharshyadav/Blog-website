@@ -11,7 +11,7 @@ const LoginForm = () => {
     <input type="text" placeholder="username" name="username" />
     <input type="password" placeholder="password" name="password" />
     <button>Login</button>
-    {state?.error}
+    {/* {state?.error ? <p>{state.error.message}</p> : null} */}
     <Link href="/register">
       {"Don't have an account?"} <b>Register</b>
     </Link>

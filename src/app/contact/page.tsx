@@ -32,8 +32,8 @@ const contact = () => {
           <textarea
             name=""
             id=""
-            cols="20"
-            rows="6"
+            // cols="20"
+            // rows="6"
             placeholder="Message"
           ></textarea>
           <button>Send</button>
