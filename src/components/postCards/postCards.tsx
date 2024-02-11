@@ -3,7 +3,7 @@ import styles from "./postCards.module.css"
 import Link from "next/link"
 
 
-export const PostCards = ({post}) => {
+export const PostCards = ({post}:any) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>

@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import styles from "./navLink.module.css"
 
-const Navlink = ({items}) => {
+const Navlink = ({items}:any) => {
   const pathName = usePathname()
   return (
     <Link className={`${styles.container} ${pathName===items.path && styles.active}`} href={items.path}>{items.name}</Link>

@@ -3,7 +3,7 @@ import { connectToDb } from "@/lib/utils"
 import { NextResponse } from "next/server";
 
 
-export const GET = async (request,{params})=>{
+export const GET = async ({params}:any)=>{
 
     const {slug} = params;
     try {

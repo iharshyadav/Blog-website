@@ -102,9 +102,9 @@ export const loginhandler = async({formData}:any)=>{
     await signIn("credentials",{username , password});
   } catch (error) {
     console.log(error)
-    if(error.message.includes("CredentialsSignin")){
-        return{error:"Invalid username or password"};
-    }
+    // if(error.message.includes("CredentialsSignin")){
+    //     return{error:"Invalid username or password"};
+    // }
     throw error;
   }
 }
